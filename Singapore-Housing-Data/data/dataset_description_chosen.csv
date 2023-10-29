@@ -1,0 +1,77 @@
+﻿Codebook / Data Dictionary,,"Decision( 1 = Accept, 0 = Reject)",Remarks
+resale_price, the property's sale price in Singapore dollars. This is the target variable that you're trying to predict for this challenge.,1,Target
+Tranc_YearMonth," year and month of the resale transaction, e.g. 2015-02",0,"data found in Tranc_Year, Tranc_Month"
+town," HDB township where the flat is located, e.g. BUKIT MERAH",0,similar to planning_area
+flat_type," type of the resale flat unit, e.g. 3 ROOM",1,
+block," block number of the resale flat, e.g. 454",0,"related to street_name, too granular"
+street_name," street name where the resale flat resides, e.g. TAMPINES ST 42",1,
+storey_range," floor level (range) of the resale flat unit, e.g. 07 TO 09",0,using mid_storey
+floor_area_sqm, floor area of the resale flat unit in square metres,1,
+flat_model," HDB model of the resale flat, e.g. Multi Generation",1,
+lease_commence_date, commencement year of the flat unit's 99-year lease,1,to convert into flat_sale_age
+Tranc_Year, year of resale transaction,1,
+Tranc_Month, month of resale transaction,1,
+mid_storey, median value of storey_range,0,related to max floor level
+lower, lower value of storey_range,0,using mid_storey
+upper, upper value of storey_range,0,using mid_storey
+mid, middle value of storey_range,1,
+full_flat_type, combination of flat_type and flat_model,0,"flat_type, flat_model "
+address, combination of block and street_name,0,"related to street_name, too granular"
+floor_area_sqft, floor area of the resale flat unit in square feet,0,same as psqm
+hdb_age, number of years from lease_commence_date to present year,0,does not reflect age at point of sale
+max_floor_lvl, highest floor of the resale flat,1,to combine with mid_storey to get storey_ratio
+year_completed, year which construction was completed for resale flat,0,similar to lease_commence_date
+residential, boolean value if resale flat has residential units in the same block,0,zero variance
+commercial, boolean value if resale flat has commercial units in the same block,1,
+market_hawker, boolean value if resale flat has a market or hawker centre in the same block,1,
+multistorey_carpark, boolean value if resale flat has a multistorey carpark in the same block,1,
+precinct_pavilion, boolean value if resale flat has a pavilion in the same block,1,
+total_dwelling_units, total number of residential dwelling units in the resale flat,1,
+1room_sold, number of 1-room residential units in the resale flat,1,
+2room_sold, number of 2-room residential units in the resale flat,1,
+3room_sold, number of 3-room residential units in the resale flat,1,
+4room_sold, number of 4-room residential units in the resale flat,1,
+5room_sold, number of 5-room residential units in the resale flat,1,
+exec_sold, number of executive type residential units in the resale flat block,1,
+multigen_sold, number of multi-generational type residential units in the resale flat block,1,
+studio_apartment_sold, number of studio apartment type residential units in the resale flat block,1,
+1room_rental, number of 1-room rental residential units in the resale flat block,1,
+2room_rental, number of 2-room rental residential units in the resale flat block,1,
+3room_rental, number of 3-room rental residential units in the resale flat block,1,
+other_room_rental," number of ""other"" type rental residential units in the resale flat block",1,
+postal, postal code of the resale flat block,0,"related to street_name, too granular"
+Latitude, Latitude based on postal code,0,"related to street_name, too granular"
+Longitude, Longitude based on postal code,0,"related to street_name, too granular"
+planning_area, Government planning area that the flat is located,1,
+Mall_Nearest_Distance, distance (in metres) to the nearest mall,1,
+Mall_Within_500m, number of malls within 500 metres,1,similar to Mall_Nearest_Distance
+Mall_Within_1km, number of malls within 1 kilometre,1,similar to Mall_Nearest_Distance
+Mall_Within_2km, number of malls within 2 kilometres,1,similar to Mall_Nearest_Distance
+Hawker_Nearest_Distance, distance (in metres) to the nearest hawker centre,1,
+Hawker_Within_500m, number of hawker centres within 500 metres,1,
+Hawker_Within_1km, number of hawker centres within 1 kilometre,1,
+Hawker_Within_2km, number of hawker centres within 2 kilometres,1,
+hawker_food_stalls, number of hawker food stalls in the nearest hawker centre,0,"too granular, impacts unevenly on entries with hawkers being further/nearer, corr data advise against"
+hawker_market_stalls, number of hawker and market stalls in the nearest hawker centre,0,"too granular, impacts unevenly on entries with hawkers being further/nearer, corr data advise against"
+mrt_nearest_distance, distance (in metres) to the nearest MRT station,1,
+mrt_name, name of the nearest MRT station,0,related to location in planning_area
+bus_interchange, boolean value if the nearest MRT station is also a bus interchange,1,
+mrt_interchange, boolean value if the nearest MRT station is a train interchange station,1,
+mrt_latitude, latitude (in decimal degrees) of the the nearest MRT station,0,related to location in planning_area
+mrt_longitude, longitude (in decimal degrees) of the nearest MRT station,0,related to location in planning_area
+bus_stop_nearest_distance, distance (in metres) to the nearest bus stop,1,
+bus_stop_name, name of the nearest bus stop,0,related to address
+bus_stop_latitude, latitude (in decimal degrees) of the the nearest bus stop,0,related to address
+bus_stop_longitude, longitude (in decimal degrees) of the nearest bus stop,0,related to address
+pri_sch_nearest_distance, distance (in metres) to the nearest primary school,1,
+pri_sch_name, name of the nearest primary school,1,
+vacancy, number of vacancies in the nearest primary school,0,likely to have similar vacancy has its own variability.
+pri_sch_affiliation, boolean value if the nearest primary school has a secondary school affiliation,1,
+pri_sch_latitude, latitude (in decimal degrees) of the the nearest primary school,0,related to location in planning_area
+pri_sch_longitude, longitude (in decimal degrees) of the nearest primary school,0,related to location in planning_area
+sec_sch_nearest_dist, distance (in metres) to the nearest secondary school,0,related to location in planning_area
+sec_sch_name, name of the nearest secondary school,1,
+cutoff_point, PSLE cutoff point of the nearest secondary school,1,points required to get into school instead of distance
+affiliation, boolean value if the nearest secondary school has an primary school affiliation,0,"vice versa of pri school if in proximity, otherwise the value of affliation would be diminished as well"
+sec_sch_latitude, latitude (in decimal degrees) of the the nearest secondary school,0,related to location in planning_area
+sec_sch_longitude, longitude (in decimal degrees) of the nearest secondary school,0,related to location in planning_area
