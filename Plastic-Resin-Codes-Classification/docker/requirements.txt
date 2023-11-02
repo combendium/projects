@@ -1,0 +1,9 @@
+streamlit
+flask
+numpy
+requests
+Pillow 
+tensorflow
+tensorflow-estimator
+tensorflow-intel
+tensorflow-io-gcs-filesystem
