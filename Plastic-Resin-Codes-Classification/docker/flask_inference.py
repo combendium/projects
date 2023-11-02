@@ -70,6 +70,18 @@ def make_predictions(): # create a normal Python function for predictions
             return jsonify({"error": "No image provided"}), 400
         image_data = user_input.read()
         image_pil = Image.open(BytesIO(image_data))
+        
+        # Check if the image has EXIF data and an orientation tag to reorientate for 
+        exif = image_pil._getexif()
+        orientation = exif.get(0x0112, 1)
+        if orientation == 3:
+            image_pil = image_pil.rotate(180, expand=True)
+        elif orientation == 6:
+            image_pil = image_pil.rotate(270, expand=True)
+        elif orientation == 8:
+            image_pil = image_pil.rotate(90, expand=True)
+            
+        #resize image
         image_pil = image_pil.resize((224, 224))
         image_array = image.img_to_array(image_pil)
         test_image = efficientnetv2_preprocess_input(image_array)
